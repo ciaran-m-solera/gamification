@@ -6,5 +6,5 @@ function GamificationTeams(){
     )
 }
 
-console.log(teams.team1)
+
 export default GamificationTeams;

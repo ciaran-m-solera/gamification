@@ -1,11 +1,14 @@
 import './App.css';
 
-import GamificationTeams from './components/GamificationTeams/GamificationTeams';
+
+import GamificationHomes from './components/GamificationHome/GamificationHome';
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <GamificationTeams/>
+        <div className='home'><GamificationHomes/></div>
+        
+        
       </header>
     </div>
   );
