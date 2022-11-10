@@ -1,0 +1,44 @@
+{
+    "team1": {
+        "members": [
+            "member1",
+            "member2",
+            "member3",
+            "member4"
+        ],
+        "projectSectionsScore": [
+            15,
+            21,
+            18,
+            19
+        ]
+    },
+    "team2": {
+        "members": [
+            "member1",
+            "member2",
+            "member3",
+            "member4"
+        ],
+        "projectSectionsScore": [
+            9,
+            11,
+            17,
+            4
+        ]
+    },
+    "team3": {
+        "members": [
+            "member1",
+            "member2",
+            "member3",
+            "member4"
+        ],
+        "projectSectionsScore": [
+            1,
+            3,
+            5,
+            7
+        ]
+    }
+}
