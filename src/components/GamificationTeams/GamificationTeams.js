@@ -1,8 +1,10 @@
 import './GamificationTeams.css'
-let teams = require('../../assets/teams.json');
-function GamificationTeams(){
+function GamificationTeams(props){
     return (
-        <div>{teams.team1.members[0]}</div>
+        <div className='popup-body'>
+            <div className='popup-main'></div>
+            {props.teamName}<br/>{props.teamScore}
+        </div>
     )
 }
 

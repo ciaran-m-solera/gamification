@@ -1,11 +1,13 @@
 {
     "team1": {
+        "teamName":"team1",
         "members": [
             "member1",
             "member2",
             "member3",
             "member4"
         ],
+        "score":80,
         "projectSectionsScore": [
             15,
             21,
@@ -14,12 +16,14 @@
         ]
     },
     "team2": {
+        "teamName":"team2",
         "members": [
             "member1",
             "member2",
             "member3",
             "member4"
         ],
+        "score":42,
         "projectSectionsScore": [
             9,
             11,
@@ -28,12 +32,14 @@
         ]
     },
     "team3": {
+        "teamName":"team3",
         "members": [
             "member1",
             "member2",
             "member3",
             "member4"
         ],
+        "score":16,
         "projectSectionsScore": [
             1,
             3,
