@@ -1,9 +1,10 @@
 import './GamificationHome.css'
 import GamificationTeams from '../GamificationTeams/GamificationTeams';
-import { useState } from 'react';
-
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 
 function GamificationHomes() {
+
     const teams = [
         {
             teamName: "Team 1",
@@ -56,6 +57,18 @@ function GamificationHomes() {
             teamId:"9"
         }
     ]
+    function getTeams(){
+        axios
+        .get("https://12f26f9f-153c-4c8c-9aec-f04ca79ee31c.mock.pstmn.io/test")
+        .then((res) => {
+            console.log(res.data);
+        })
+        .catch((err) =>{
+            if(err){
+                console.error(err);
+            }
+        })
+    }
     const updatePopupVisibility = (visiblity) => {
         setPopupVisible(visiblity);
     }
@@ -68,7 +81,9 @@ function GamificationHomes() {
     const [teamName, setTeamName] = useState(teams[0].teamName);
     const [teamScore, setTeamScore] = useState(teams[0].teamScore);
     const [popupVisible,setPopupVisible] = useState("disabled");
-
+    useEffect(()=>{
+        getTeams();
+    })
     return (
         <div className="GameDiv">
             <h4>Solera Teams, Bootcamp 4</h4>
