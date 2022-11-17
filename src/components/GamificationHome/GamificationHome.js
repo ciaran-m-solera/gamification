@@ -6,75 +6,82 @@ import { useState } from 'react';
 function GamificationHomes() {
     const teams = [
         {
-            teamName: "team1",
+            teamName: "Team 1",
             teamScore: 20,
             teamId:"0"
         },
         {
-            teamName: "team2",
+            teamName: "Team 2",
             teamScore: 12,
             teamId:"1"
         },
         {
-            teamName: "team3",
+            teamName: "Team 3",
             teamScore: 15,
             teamId:"2"
         },
         {
-            teamName: "team4",
+            teamName: "Team 4",
             teamScore: 18,
             teamId:"3"
         },
         {
-            teamName: "team5",
+            teamName: "Team 5",
             teamScore: 13,
             teamId:"4"
         },
         {
-            teamName: "team6",
+            teamName: "Team 6",
             teamScore: 11,
             teamId:"5"
         },
         {
-            teamName: "team7",
+            teamName: "Team 7",
             teamScore: 16,
             teamId:"6"
         },
         {
-            teamName: "team8",
+            teamName: "Team 8",
             teamScore: 18,
             teamId:"7"
         },
         {
-            teamName: "team9",
+            teamName: "Team 9",
             teamScore: 13,
             teamId:"8"
         },
         {
-            teamName: "team10",
+            teamName: "Team 10",
             teamScore: 12,
             teamId:"9"
         }
     ]
-    function openTeamView(event) {
-        let selectedTeam = event.target.id;
+    const updatePopupVisibility = (visiblity) => {
+        setPopupVisible(visiblity);
+    }
+    const openTeamView = (e) => {
+        let selectedTeam = e.target.id;
         setTeamName(teams[selectedTeam].teamName);
-        setTeamScore(teams[selectedTeam].teamScore)
+        setTeamScore(teams[selectedTeam].teamScore);
+        setPopupVisible("enabled");
     };
     const [teamName, setTeamName] = useState(teams[0].teamName);
-    const [teamScore, setTeamScore] = useState(teams[0].teamScore)
+    const [teamScore, setTeamScore] = useState(teams[0].teamScore);
+    const [popupVisible,setPopupVisible] = useState("disabled");
+
     return (
         <div className="GameDiv">
-            <div className="score-wrapper">
+            <h4>Solera Teams, Bootcamp 4</h4>
+            <button className="score-wrapper">
                 {teams.map(team =>
-                    <div className="score-box" onClick={openTeamView} id={team.teamId} key={team.teamName}>
-                        {team.teamName}<br />
-                        {team.teamScore}
+                    <div className="score-box" onClick={(e)=>openTeamView(e)} id={team.teamId} key={team.teamName}>
+                        <p>{team.teamName}</p>
+                        <h1>{team.teamScore}</h1>
                     </div>
                 )}
-            </div>
+            </button>
             <div className='team-view'>
-                <GamificationTeams teamName={teamName} teamScore={teamScore} />
+                <GamificationTeams teamName={teamName} teamScore={teamScore} popupVisible={popupVisible} updatePopupVisibility={updatePopupVisibility} />
             </div>
         </div>
     )
