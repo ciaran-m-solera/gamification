@@ -1,6 +1,6 @@
 import './GamificationHome.css'
 import GamificationTeams from '../GamificationTeams/GamificationTeams';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function GamificationHomes() {
@@ -9,65 +9,65 @@ function GamificationHomes() {
         {
             teamName: "Team 1",
             teamScore: 20,
-            teamId:"0"
+            teamId: "0"
         },
         {
             teamName: "Team 2",
             teamScore: 12,
-            teamId:"1"
+            teamId: "1"
         },
         {
             teamName: "Team 3",
             teamScore: 15,
-            teamId:"2"
+            teamId: "2"
         },
         {
             teamName: "Team 4",
             teamScore: 18,
-            teamId:"3"
+            teamId: "3"
         },
         {
             teamName: "Team 5",
             teamScore: 13,
-            teamId:"4"
+            teamId: "4"
         },
         {
             teamName: "Team 6",
             teamScore: 11,
-            teamId:"5"
+            teamId: "5"
         },
         {
             teamName: "Team 7",
             teamScore: 16,
-            teamId:"6"
+            teamId: "6"
         },
         {
             teamName: "Team 8",
             teamScore: 18,
-            teamId:"7"
+            teamId: "7"
         },
         {
             teamName: "Team 9",
             teamScore: 13,
-            teamId:"8"
+            teamId: "8"
         },
         {
             teamName: "Team 10",
             teamScore: 12,
-            teamId:"9"
+            teamId: "9"
         }
     ]
-    function getTeams(){
-        axios
-        .get("https://12f26f9f-153c-4c8c-9aec-f04ca79ee31c.mock.pstmn.io/test")
-        .then((res) => {
-            console.log(res.data);
-        })
-        .catch((err) =>{
-            if(err){
-                console.error(err);
-            }
-        })
+    const getTeams = async () => {
+        await axios
+            .get("http://localhost:4000/teams")
+            .then((res) => {
+                return res.data;
+            })
+            .catch((err) => {
+                if (err) {
+                    console.error(err);
+                }
+            })
     }
     const updatePopupVisibility = (visiblity) => {
         setPopupVisible(visiblity);
@@ -80,16 +80,23 @@ function GamificationHomes() {
     };
     const [teamName, setTeamName] = useState(teams[0].teamName);
     const [teamScore, setTeamScore] = useState(teams[0].teamScore);
-    const [popupVisible,setPopupVisible] = useState("disabled");
-    useEffect(()=>{
-        getTeams();
-    })
+    const [popupVisible, setPopupVisible] = useState("disabled");
+    const [teamsArray, setTeamsArray] = useState([]);
+
+
+    useEffect(() => {
+        const getTeamData = async () => {
+            const teamsData = await axios("http://localhost:4000/teams",);
+            setTeamsArray(teamsData.data);
+        }
+        getTeamData();
+    }, [])
     return (
         <div className="GameDiv">
-            <h4>Solera Teams, Bootcamp 4</h4>
+            <h4>Solera Teams, Bootcamp 4</h4>{JSON.stringify(teamsArray)}
             <button className="score-wrapper">
                 {teams.map(team =>
-                    <div className="score-box" onClick={(e)=>openTeamView(e)} id={team.teamId} key={team.teamName}>
+                    <div className="score-box" onClick={(e) => openTeamView(e)} id={team.teamId} key={team.teamName}>
                         <p>{team.teamName}</p>
                         <h1>{team.teamScore}</h1>
                     </div>
