@@ -57,18 +57,6 @@ function GamificationHomes() {
             teamId: "9"
         }
     ]
-    const getTeams = async () => {
-        await axios
-            .get("http://localhost:4000/teams")
-            .then((res) => {
-                return res.data;
-            })
-            .catch((err) => {
-                if (err) {
-                    console.error(err);
-                }
-            })
-    }
     const updatePopupVisibility = (visiblity) => {
         setPopupVisible(visiblity);
     }
